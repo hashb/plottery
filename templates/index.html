@@ -11,7 +11,7 @@
     
     <div class="container">
         <div class="visualizer">
-            <canvas id="gcode-canvas" width="600" height="600"></canvas>
+            <canvas id="gcode-canvas" width="600" height="500"></canvas>
             <div class="info-box" id="info-box">
                 <p><strong>Bounding Box:</strong> <span id="bbox-info">No G-code loaded</span></p>
                 <p><strong>Current Position:</strong> X: <span id="pos-x">0</span>, Y: <span id="pos-y">0</span>, Z: <span id="pos-z">0</span></p>
@@ -30,7 +30,7 @@
                 <button id="clear-btn">Clear</button>
             </div>
             
-            <h2>Manual Controls</h2>
+            <h2 style="text-align: center;">Manual Controls</h2>
             <div class="jog-controls">
                 <div></div>
                 <button class="jog-btn middle-col" data-axis="y" data-dir="-1">Up</button>
@@ -50,22 +50,22 @@
                 <button class="jog-btn" data-axis="z" data-dir="1">Pen Down</button>
             </div>
             
-            <div>
-                <h3>Legend</h3>
-                <div style="display: flex; align-items: center; margin-bottom: 5px;">
-                    <div style="width: 30px; border-top: 2px dashed #aaa; margin-right: 10px;"></div>
+            <div class="legend">
+                <h3 style="text-align: center;">Legend</h3>
+                <div style="display: flex; align-items: center; margin-bottom: 8px; justify-content: center;">
+                    <div style="width: 30px; border-top: 2px dashed #aaa; margin-right: 12px;"></div>
                     <span>G0 - Rapid Move</span>
                 </div>
-                <div style="display: flex; align-items: center; margin-bottom: 5px;">
-                    <div style="width: 30px; border-top: 2px solid #000; margin-right: 10px;"></div>
+                <div style="display: flex; align-items: center; margin-bottom: 8px; justify-content: center;">
+                    <div style="width: 30px; border-top: 2px solid #000; margin-right: 12px;"></div>
                     <span>G1 - Drawing Move</span>
                 </div>
-                <div style="display: flex; align-items: center; margin-bottom: 5px;">
-                    <div style="width: 30px; border-top: 2px solid #0050b4; margin-right: 10px; border-radius: 5px;"></div>
+                <div style="display: flex; align-items: center; margin-bottom: 8px; justify-content: center;">
+                    <div style="width: 30px; border-top: 2px solid #0050b4; margin-right: 12px; border-radius: 5px;"></div>
                     <span>G2/G3 - Arc Moves</span>
                 </div>
-                <div style="display: flex; align-items: center; margin-bottom: 5px;">
-                    <div style="width: 15px; height: 15px; background-color: red; border-radius: 50%; margin-right: 10px;"></div>
+                <div style="display: flex; align-items: center; margin-bottom: 8px; justify-content: center;">
+                    <div style="width: 15px; height: 15px; background-color: #ff4757; border-radius: 50%; margin-right: 12px;"></div>
                     <span>Current Position</span>
                 </div>
             </div>
