@@ -2,6 +2,8 @@
 
 A web-based G-code visualizer and job management tool for pen plotters.
 
+![Plottery Screenshot](./static/images/screenshot.png)
+
 ## Features
 
 - Upload or paste G-code files
