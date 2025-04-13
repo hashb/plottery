@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen Plotter G-code Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Pen Plotter G-code Visualizer</h1>
+    
+    <div class="container">
+        <div class="visualizer">
+            <canvas id="gcode-canvas" width="600" height="600"></canvas>
+            <div class="info-box" id="info-box">
+                <p><strong>Bounding Box:</strong> <span id="bbox-info">No G-code loaded</span></p>
+                <p><strong>Current Position:</strong> X: <span id="pos-x">0</span>, Y: <span id="pos-y">0</span>, Z: <span id="pos-z">0</span></p>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <h2>G-code Input</h2>
+            <textarea id="gcode-input" placeholder="Paste G-code here..."></textarea>
+            
+            <div class="button-group">
+                <input type="file" id="file-input" accept=".gcode,.nc,.ngc" style="display: none;">
+                <button id="load-file-btn">Load File</button>
+                <button id="parse-btn">Visualize</button>
+                <button id="send-job-btn">Send Job</button>
+                <button id="clear-btn">Clear</button>
+            </div>
+            
+            <h2>Manual Controls</h2>
+            <div class="jog-controls">
+                <div></div>
+                <button class="jog-btn middle-col" data-axis="y" data-dir="-1">Up</button>
+                <div></div>
+                
+                <button class="jog-btn" data-axis="x" data-dir="-1">Left</button>
+                <button class="jog-btn middle-col" data-axis="home">Home</button>
+                <button class="jog-btn" data-axis="x" data-dir="1">Right</button>
+                
+                <div></div>
+                <button class="jog-btn middle-col" data-axis="y" data-dir="1">Down</button>
+                <div></div>
+            </div>
+            
+            <div class="z-controls">
+                <button class="jog-btn" data-axis="z" data-dir="-1">Pen Up</button>
+                <button class="jog-btn" data-axis="z" data-dir="1">Pen Down</button>
+            </div>
+            
+            <div>
+                <h3>Legend</h3>
+                <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                    <div style="width: 30px; border-top: 2px dashed #aaa; margin-right: 10px;"></div>
+                    <span>G0 - Rapid Move</span>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                    <div style="width: 30px; border-top: 2px solid #000; margin-right: 10px;"></div>
+                    <span>G1 - Drawing Move</span>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                    <div style="width: 30px; border-top: 2px solid #0050b4; margin-right: 10px; border-radius: 5px;"></div>
+                    <span>G2/G3 - Arc Moves</span>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                    <div style="width: 15px; height: 15px; background-color: red; border-radius: 50%; margin-right: 10px;"></div>
+                    <span>Current Position</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="{{ url_for('static', filename='js/gcode-parser.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/gcode-renderer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/visualizer.js') }}"></script>
+</body>
+</html>
